@@ -1,0 +1,1 @@
+<x-layouts.app><h2>{{ $product['name'] }}</h2><x-card><p>{{ $product['description'] }}</p><p><strong>Rp {{ number_format($product['price'],0,',','.') }}</strong></p><a href="{{ route('products') }}" class="btn btn-secondary">Back</a></x-card></x-layouts.app>
