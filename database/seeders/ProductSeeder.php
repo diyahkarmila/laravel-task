@@ -4,14 +4,12 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
-class DatabaseSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call([
-            CategorySeeder::class,
-            ProductSeeder::class,
-        ]);
+        Product::factory()->count(30)->create();
     }
 }
