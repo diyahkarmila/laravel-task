@@ -65,9 +65,19 @@
                     <p class="card-text text-muted">{{ Str::limit($product->description, 50) }}</p>
                     <h6 class="text-success">Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
                     <div class="mt-3">
-                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">View</a>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
+    <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <!-- TOMBOL ADD TO CART BARU -->
+                    @auth
+                    <form action="{{ route('cart.store', $product) }}" method="POST" class="d-inline">
+                        @csrf
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-sm btn-success">Add to Cart</button>
+                    </form>
+                    @else
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">Login to Buy</a>
+                    @endauth
+                </div>
                 </div>
             </div>
         </div>
